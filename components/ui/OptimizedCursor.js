@@ -87,7 +87,7 @@ export default function OptimizedCursor() {
     // Add hover and magnetic effects
     const addEffects = () => {
       const interactives = document.querySelectorAll('a, button, .service-card, .gallery-item');
-      const magneticTargets = document.querySelectorAll('a[href="/#contact"], button[type="submit"]');
+      const magneticTargets = document.querySelectorAll('a[href="/#reservations"], button[type="submit"]');
 
       interactives.forEach(el => {
         el.addEventListener('mouseenter', () => {

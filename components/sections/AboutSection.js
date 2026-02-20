@@ -69,7 +69,7 @@ export default function AboutSection() {
             </div>
 
             <Link
-              href="/#contact"
+              href="/#reservations"
               className="inline-block mt-12 px-10 py-4 border border-gold text-gold text-[10px] uppercase tracking-widest hover:bg-gold hover:text-primary focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-primary outline-none transition-all duration-500"
               style={{ transitionProperty: 'background-color, color' }}
             >
