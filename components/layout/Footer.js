@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
-import { FaInstagram, FaFacebookF, FaTiktok, FaPinterest, FaPaperPlane } from 'react-icons/fa';
+import { FaInstagram, FaTiktok, FaPaperPlane } from 'react-icons/fa';
 
 export default function Footer() {
   const [email, setEmail] = useState('');
@@ -26,17 +26,11 @@ export default function Footer() {
               Dedicated to the sophisticated art of transformation. Bespoke glamour for the modern individual.
             </p>
             <div className="flex gap-6 mt-8">
-              <a href="https://www.instagram.com/makeup_by_lino/" target="_blank" rel="noopener noreferrer" className="text-ivory/40 hover:text-gold transition-colors" aria-label="LINO Instagram Artistry Page">
+              <a href="https://www.instagram.com/makeup_by_lino" target="_blank" rel="noopener noreferrer" className="text-ivory/40 hover:text-gold transition-colors" aria-label="LINO Instagram Artistry Page">
                 <FaInstagram size={18} />
               </a>
-              <a href="#" className="text-ivory/40 hover:text-gold transition-colors" aria-label="LINO Facebook Presence">
-                <FaFacebookF size={18} />
-              </a>
-              <a href="#" className="text-ivory/40 hover:text-gold transition-colors" aria-label="LINO TikTok Gallery">
+              <a href="https://www.tiktok.com/@makeup_by_lino" target="_blank" rel="noopener noreferrer" className="text-ivory/40 hover:text-gold transition-colors" aria-label="LINO TikTok Gallery">
                 <FaTiktok size={18} />
-              </a>
-              <a href="#" className="text-ivory/40 hover:text-gold transition-colors" aria-label="LINO Pinterest Inspirations">
-                <FaPinterest size={18} />
               </a>
             </div>
           </div>

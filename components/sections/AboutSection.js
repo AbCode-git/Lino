@@ -98,20 +98,6 @@ export default function AboutSection() {
               <span className="text-gold font-playfair italic text-2xl">Lulit W.</span>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1, delay: 0.5 }}
-            >
-              <Link
-                href="/#reservations"
-                className="inline-block mt-12 px-10 py-4 border border-gold text-gold text-[10px] uppercase tracking-widest hover:bg-gold hover:text-primary focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-primary outline-none transition-all duration-500"
-                style={{ transitionProperty: 'background-color, color' }}
-              >
-                Learn Our Philosophy
-              </Link>
-            </motion.div>
           </div>
         </div>
       </div>
