@@ -1,5 +1,5 @@
-import { useState, useRef } from 'react';
-import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
+import { useState, useRef, useMemo } from 'react';
+import { motion, AnimatePresence, useScroll, useTransform, useSpring, useMotionValue } from 'framer-motion';
 import OptimizedImage from '../ui/OptimizedImage';
 
 const galleryItems = [
@@ -94,6 +94,21 @@ export default function GallerySection() {
   const y1 = useTransform(scrollYProgress, [0, 1], [0, -50]);
   const y2 = useTransform(scrollYProgress, [0, 1], [0, 50]);
 
+  // Noir Spotlight Logic
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const handleMouseMove = ({ currentTarget, clientX, clientY }) => {
+    const { left, top } = currentTarget.getBoundingClientRect();
+    mouseX.set(clientX - left);
+    mouseY.set(clientY - top);
+  };
+
+  const spotlightBg = useTransform(
+    [mouseX, mouseY],
+    ([x, y]) => `radial-gradient(600px circle at ${x}px ${y}px, rgba(212, 175, 55, 0.03), transparent 80%)`
+  );
+
 
   const filteredItems = activeFilter === 'all'
     ? galleryItems
@@ -136,32 +151,24 @@ export default function GallerySection() {
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-12">
+        <div
+          className="grid grid-cols-1 md:grid-cols-12 gap-12 mt-12 relative"
+          onMouseMove={handleMouseMove}
+        >
+          {/* Spotlight background */}
+          <motion.div
+            className="absolute inset-0 pointer-events-none z-0"
+            style={{ background: spotlightBg }}
+          />
+
           {filteredItems.map((item, index) => (
-            <motion.div
+            <PortfolioCard
               key={`${item.title}-${index}`}
-              layout
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.8, delay: (index % 3) * 0.1 }}
-              style={{ y: index % 2 === 0 ? y1 : y2 }}
-              className="group relative aspect-[3/4] overflow-hidden bg-primary-dark border border-ivory/5 cursor-pointer"
+              item={item}
+              index={index}
+              yOffset={index % 2 === 0 ? y1 : y2}
               onClick={() => setSelectedImage(item)}
-            >
-              <OptimizedImage
-                src={item.image}
-                alt={item.title}
-                fill
-                objectFit="cover"
-                className="grayscale transition-transform duration-1000 group-hover:scale-110 group-hover:grayscale-0"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 flex flex-col justify-end p-8">
-                <span className="text-gold text-[10px] uppercase tracking-widest mb-2">{item.category}</span>
-                <h3 className="text-2xl text-ivory font-playfair mb-2">{item.title}</h3>
-                <p className="text-ivory/60 text-xs font-light">{item.description}</p>
-              </div>
-            </motion.div>
+            />
           ))}
         </div>
       </div>
@@ -215,5 +222,85 @@ export default function GallerySection() {
         )}
       </AnimatePresence>
     </section>
+  );
+}
+
+// Separate component for 3D Tilt effect and local state
+function PortfolioCard({ item, index, yOffset, onClick }) {
+  const cardRef = useRef(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [10, -10]), { damping: 20, stiffness: 150 });
+  const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-10, 10]), { damping: 20, stiffness: 150 });
+
+  function onMouseMove(event) {
+    const rect = cardRef.current.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    x.set((event.clientX - centerX) / rect.width);
+    y.set((event.clientY - centerY) / rect.height);
+  }
+
+  function onMouseLeave() {
+    x.set(0);
+    y.set(0);
+  }
+
+  // Editorial Asymmetric Spans
+  const getGridSpan = (idx) => {
+    const pattern = [
+      'md:col-span-4', // Small
+      'md:col-span-8', // Large
+      'md:col-span-5', // Medium
+      'md:col-span-7', // Medium-Large
+      'md:col-span-12', // Hero Full
+      'md:col-span-6', // Half
+      'md:col-span-6', // Half
+    ];
+    return pattern[idx % pattern.length];
+  };
+
+  return (
+    <motion.div
+      ref={cardRef}
+      layout
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+      style={{
+        y: yOffset,
+        rotateX,
+        rotateY,
+        perspective: 1000
+      }}
+      className={`group relative ${getGridSpan(index)} aspect-[4/5] overflow-hidden bg-primary-dark border border-ivory/5 cursor-pointer z-10 transition-shadow duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)]`}
+      onMouseMove={onMouseMove}
+      onMouseLeave={onMouseLeave}
+      onClick={onClick}
+    >
+      <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors duration-700 z-10"></div>
+      <OptimizedImage
+        src={item.image}
+        alt={item.title}
+        fill
+        objectFit="cover"
+        className="grayscale transition-transform duration-1000 group-hover:scale-110 group-hover:grayscale-0 contrast-[1.1]"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 flex flex-col justify-end p-10 z-20">
+        <motion.span
+          initial={{ opacity: 0, x: -10 }}
+          whileHover={{ opacity: 1, x: 0 }}
+          className="text-gold text-[10px] uppercase tracking-widest mb-3 font-bold"
+        >
+          {item.category}
+        </motion.span>
+        <h3 className="text-3xl text-ivory font-playfair mb-3 leading-tight tracking-wide">{item.title}</h3>
+        <p className="text-ivory/60 text-xs font-light tracking-widest uppercase opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-700 delay-100 lowercase italic">
+          {item.description}
+        </p>
+      </div>
+    </motion.div>
   );
 }
