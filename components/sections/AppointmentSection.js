@@ -132,12 +132,6 @@ export default function AppointmentSection() {
                 </div>
               ))}
             </div>
-
-            <div className="mt-12 p-8 border border-gold/10 bg-primary-light/30 backdrop-blur-sm">
-              <p className="text-[10px] text-gold/60 uppercase tracking-widest leading-loose">
-                <strong className="text-gold">Policy:</strong> A boutique deposit is required for bridal and specialty bookings. We request a 24-hour notice for any adjustments to your reserved session.
-              </p>
-            </div>
           </div>
 
           {/* Form Side */}
