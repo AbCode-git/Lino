@@ -15,17 +15,19 @@ export default function TimeSlotPicker({ slots, selectedTime, bookedSlots = [], 
                             disabled={isBooked}
                             onClick={(e) => { e.preventDefault(); onTimeSelect(time); }}
                             className={`
-                py-3 px-4 border text-[10px] tracking-widest uppercase transition-all duration-500 relative overflow-hidden
+                py-3 px-4 border text-[10px] tracking-widest uppercase transition-all duration-500 relative overflow-hidden flex flex-col items-center justify-center min-h-[44px]
                 ${isBooked ? 'border-ivory/5 text-ivory/20 cursor-not-allowed bg-primary-dark/20' :
                                     isSelected ? 'border-gold bg-gold text-primary font-bold shadow-lg shadow-gold/20' :
                                         'border-ivory/10 text-ivory/60 hover:border-gold/50 hover:text-gold'}
               `}
                         >
-                            {time}
+                            <span className={`relative z-10 ${isBooked ? 'opacity-30 line-through' : ''}`}>
+                                {time}
+                            </span>
                             {isBooked && (
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                    <div className="w-full h-[1px] bg-ivory/10 rotate-12"></div>
-                                    <span className="bg-primary/80 px-1 text-[8px] font-bold tracking-tighter">Booked</span>
+                                <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                                    <div className="absolute w-full h-[1px] bg-ivory/10 -rotate-12"></div>
+                                    <span className="bg-primary-dark px-2 py-0.5 text-[8px] font-bold tracking-widest text-white/50 border border-white/5 shadow-sm">BOOKED</span>
                                 </div>
                             )}
                             {isSelected && !isBooked && (
