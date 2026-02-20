@@ -271,7 +271,7 @@ export default function AppointmentSection() {
                 disabled={isSubmitting}
                 className={`w-full py-5 bg-gold text-primary font-bold uppercase tracking-[0.3em] text-[10px] transition-all duration-500 ${isSubmitting ? 'opacity-50 cursor-not-allowed' : 'hover:bg-ivory shadow-2xl'} focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-primary outline-none transition-property-[background-color,color,opacity]`}
               >
-                {isSubmitting ? 'Processing Invitation…' : 'Request Invitation'}
+                {isSubmitting ? 'Booking Session…' : 'Book Now!!'}
               </button>
 
               {submitStatus === 'success' && (
@@ -280,7 +280,7 @@ export default function AppointmentSection() {
                   animate={{ opacity: 1, y: 0 }}
                   className="p-4 bg-gold/10 border border-gold/20 text-gold text-[10px] uppercase tracking-widest text-center"
                 >
-                  Thank you! Your invitation request has been received. Our concierge will contact you shortly.
+                  Thank you! Your session is being processed. Our concierge will contact you shortly.
                 </motion.div>
               )}
 
