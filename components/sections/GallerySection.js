@@ -4,42 +4,42 @@ import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import OptimizedImage from '../ui/OptimizedImage';
 
 const galleryItems = [
-  {
-    category: 'makeup',
-    image: '/images/gallery/make-up-6.jpg',
-    title: 'Noir Glamour',
-    description: 'Sophisticated evening aesthetics'
-  },
-  {
-    category: 'hair',
-    image: '/images/gallery/hair-1.jpg',
-    title: 'Sculpted Silhouette',
-    description: 'Precision hair tailoring'
-  },
-  {
-    category: 'wedding',
-    image: '/images/gallery/bridal-shower-2.jpg',
-    title: 'The Bride',
-    description: 'Timeless structural beauty'
-  },
-  {
-    category: 'makeup',
-    image: '/images/gallery/make-up-12.jpg',
-    title: 'Gold Essence',
-    description: 'Metallic focus artistry'
-  },
-  {
-    category: 'hair',
-    image: '/images/gallery/make-up-and-hair-13.jpg',
-    title: 'Ethereal Waves',
-    description: 'Fluid editorial styling'
-  },
-  {
-    category: 'wedding',
-    image: '/images/gallery/bridal-shower-1.jpg',
-    title: 'Royal Preparation',
-    description: 'Bespoke bridal preparation ritual'
-  }
+  // Original Curated Items
+  { category: 'makeup', image: '/images/gallery/make-up-6.jpg', title: 'Noir Glamour', description: 'Sophisticated evening aesthetics' },
+  { category: 'hair', image: '/images/gallery/hair-1.jpg', title: 'Sculpted Silhouette', description: 'Precision hair tailoring' },
+  { category: 'wedding', image: '/images/gallery/bridal-shower-2.jpg', title: 'The Bride', description: 'Timeless structural beauty' },
+  { category: 'makeup', image: '/images/gallery/make-up-12.jpg', title: 'Gold Essence', description: 'Metallic focus artistry' },
+  { category: 'hair', image: '/images/gallery/make-up-and-hair-13.jpg', title: 'Ethereal Waves', description: 'Fluid editorial styling' },
+  { category: 'wedding', image: '/images/gallery/bridal-shower-1.jpg', title: 'Royal Preparation', description: 'Bespoke bridal preparation ritual' },
+
+  // New Bridal Collection
+  { category: 'wedding', image: '/images/gallery/user_feed/Bridal-1.jpg', title: 'Couture Bride', description: 'Elegant bridal transformation' },
+  { category: 'wedding', image: '/images/gallery/user_feed/Bridal-2.jpg', title: 'White Lace Elegance', description: 'Timeless bridal aesthetics' },
+  { category: 'wedding', image: '/images/gallery/user_feed/Bride-11.jpg', title: 'Modern Bridal Glam', description: 'Sophisticated wedding artistry' },
+  { category: 'wedding', image: '/images/gallery/user_feed/Bride-12.jpg', title: 'Ethereal Bridal', description: 'Soft and glowy bridal look' },
+  { category: 'wedding', image: '/images/gallery/user_feed/Bride-17.jpg', title: 'Traditional Radiance', description: 'Cultural bridal precision' },
+
+  // New Hair Artistry
+  { category: 'hair', image: '/images/gallery/user_feed/Hair-1.jpg', title: 'Cascading Tresses', description: 'Luxury waves and volume' },
+  { category: 'hair', image: '/images/gallery/user_feed/Hair-10.jpg', title: 'Architectural Style', description: 'Modern hair sculpture' },
+  { category: 'hair', image: '/images/gallery/user_feed/Hair-2.jpg', title: 'Braid Artistry', description: 'Intricate and detailed braiding' },
+  { category: 'hair', image: '/images/gallery/user_feed/Hair-7.jpg', title: 'Polished Curls', description: 'Defined and elegant curling' },
+
+  // New Makeup Masterpieces
+  { category: 'makeup', image: '/images/gallery/user_feed/Makeup-10.jpg', title: 'Sunset Glow', description: 'Warm editorial makeup' },
+  { category: 'makeup', image: '/images/gallery/user_feed/Makeup-11.jpg', title: 'High Contrast', description: 'Bold and dramatic look' },
+  { category: 'makeup', image: '/images/gallery/user_feed/Makeup-13.jpg', title: 'Soft Focus', description: 'Natural and radiant skin' },
+  { category: 'makeup', image: '/images/gallery/user_feed/Makeup-16.jpg', title: 'Urban Chic', description: 'Modern metropolitan glam' },
+  { category: 'makeup', image: '/images/gallery/user_feed/Makeup-19.jpg', title: 'Emerald Gaze', description: 'Vibrant eye-focused artistry' },
+
+  // New Nail Art
+  { category: 'nails', image: '/images/gallery/user_feed/Nail-3.jpg', title: 'Minimalist Nails', description: 'Clean and sophisticated design' },
+  { category: 'nails', image: '/images/gallery/user_feed/Nail-4.jpg', title: 'Luxury Polish', description: 'High-end nail finishing' },
+
+  // Featured Professional Highlights
+  { category: 'makeup', image: '/images/gallery/user_feed/2224704228744351048_2939237332_1.jpg', title: 'Studio Precision', description: 'High-definition studio makeup' },
+  { category: 'wedding', image: '/images/gallery/user_feed/2897925831621386506_2939237332_1.jpg', title: 'The Reception', description: 'Glamorous reception look' },
+  { category: 'makeup', image: '/images/gallery/user_feed/2986554338574363763_2939237332_1.jpg', title: 'Signature Glow', description: 'The definitive Lino radiance' }
 ];
 
 const filterCategories = [
