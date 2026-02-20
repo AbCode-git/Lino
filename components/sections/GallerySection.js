@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { motion, AnimatePresence, useSpring, useMotionValue } from 'framer-motion';
+import { motion, AnimatePresence, useTransform, useSpring, useMotionValue } from 'framer-motion';
 import OptimizedImage from '../ui/OptimizedImage';
 
 /**
@@ -249,13 +249,13 @@ function PortfolioCard({ item, index, onClick }) {
   // Editorial Asymmetric Spans
   const getGridSpan = (idx) => {
     const pattern = [
-      'md:col-span-4', // Small
-      'md:col-span-8', // Large
+      'md:col-span-3', // Small
       'md:col-span-5', // Medium
-      'md:col-span-7', // Medium-Large
+      'md:col-span-4', // Small-Medium
       'md:col-span-6', // Half
-      'md:col-span-6', // Half
-      'md:col-span-4', // Small
+      'md:col-span-4', // Small-Medium
+      'md:col-span-3', // Small
+      'md:col-span-5', // Medium
     ];
     return pattern[idx % pattern.length];
   };
