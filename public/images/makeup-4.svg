@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
+  <rect width="600" height="600" fill="#f1e1f8"/>
+  <g transform="translate(150, 150)">
+    <polygon points="150,0 300,150 150,300 0,150" fill="#9b59b6" opacity="0.3"/>
+    <polygon points="150,50 250,150 150,250 50,150" fill="#9b59b6" opacity="0.5"/>
+    <polygon points="150,100 200,150 150,200 100,150" fill="#9b59b6" opacity="0.7"/>
+  </g>
+  <text x="300" y="450" font-family="Arial" font-size="24" text-anchor="middle" fill="#333">Bold Lips & Winged Liner</text>
+  <text x="300" y="480" font-family="Arial" font-size="18" text-anchor="middle" fill="#666">#boldlips #wingedliner</text>
+</svg>

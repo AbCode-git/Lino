@@ -1,0 +1,42 @@
+  Γû▓ Next.js 14.2.26
+
+   Linting and checking validity of types ...
+   Creating an optimized production build ...
+Browserslist: browsers data (caniuse-lite) is 11 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+ Γ£ô Compiled successfully
+   Collecting page data ...
+   Generating static pages (0/3) ...
+ReferenceError: motion is not defined
+    at C:\LINO\.next\server\chunks\988.js:1:1359
+    at Array.map (<anonymous>)
+    at n (C:\LINO\.next\server\chunks\988.js:1:1127)
+    at Wc (C:\LINO\node_modules\react-dom\cjs\react-dom-server.browser.production.min.js:68:44)
+    at Zc (C:\LINO\node_modules\react-dom\cjs\react-dom-server.browser.production.min.js:70:253)
+    at Z (C:\LINO\node_modules\react-dom\cjs\react-dom-server.browser.production.min.js:76:89)
+    at Zc (C:\LINO\node_modules\react-dom\cjs\react-dom-server.browser.production.min.js:73:476)
+    at Z (C:\LINO\node_modules\react-dom\cjs\react-dom-server.browser.production.min.js:76:89)
+    at $c (C:\LINO\node_modules\react-dom\cjs\react-dom-server.browser.production.min.js:78:98)
+    at bd (C:\LINO\node_modules\react-dom\cjs\react-dom-server.browser.production.min.js:77:404)
+
+Error occurred prerendering page "/". Read more: https://nextjs.org/docs/messages/prerender-error
+
+ReferenceError: motion is not defined
+    at C:\LINO\.next\server\chunks\988.js:1:1359
+    at Array.map (<anonymous>)
+    at n (C:\LINO\.next\server\chunks\988.js:1:1127)
+    at Wc (C:\LINO\node_modules\react-dom\cjs\react-dom-server.browser.production.min.js:68:44)
+    at Zc (C:\LINO\node_modules\react-dom\cjs\react-dom-server.browser.production.min.js:70:253)
+    at Z (C:\LINO\node_modules\react-dom\cjs\react-dom-server.browser.production.min.js:76:89)
+    at Zc (C:\LINO\node_modules\react-dom\cjs\react-dom-server.browser.production.min.js:73:476)
+    at Z (C:\LINO\node_modules\react-dom\cjs\react-dom-server.browser.production.min.js:76:89)
+    at $c (C:\LINO\node_modules\react-dom\cjs\react-dom-server.browser.production.min.js:78:98)
+    at bd (C:\LINO\node_modules\react-dom\cjs\react-dom-server.browser.production.min.js:77:404)
+ Γ£ô Generating static pages (3/3)
+
+> Export encountered errors on following paths:
+	/

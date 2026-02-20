@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
+  <rect width="600" height="600" fill="#f8e1e7"/>
+  <g transform="translate(150, 150)">
+    <path d="M150,0 C232.843,0 300,67.157 300,150 C300,232.843 232.843,300 150,300 C67.157,300 0,232.843 0,150 C0,67.157 67.157,0 150,0 Z" fill="#e83e8c" opacity="0.2"/>
+    <path d="M150,50 C205.228,50 250,94.772 250,150 C250,205.228 205.228,250 150,250 C94.772,250 50,205.228 50,150 C50,94.772 94.772,50 150,50 Z" fill="#e83e8c" opacity="0.4"/>
+    <path d="M150,100 C177.614,100 200,122.386 200,150 C200,177.614 177.614,200 150,200 C122.386,200 100,177.614 100,150 C100,122.386 122.386,100 150,100 Z" fill="#e83e8c" opacity="0.6"/>
+  </g>
+  <text x="300" y="450" font-family="Arial" font-size="24" text-anchor="middle" fill="#333">Bridal Makeup</text>
+  <text x="300" y="480" font-family="Arial" font-size="18" text-anchor="middle" fill="#666">#bridalmakeup #weddingglam</text>
+</svg>

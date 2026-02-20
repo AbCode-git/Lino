@@ -1,0 +1,69 @@
+  Γû▓ Next.js 14.2.26
+
+   Linting and checking validity of types ...
+   Creating an optimized production build ...
+Browserslist: browsers data (caniuse-lite) is 11 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|C:\LINO\node_modules\next\dist\build\webpack\loaders\css-loader\src\index.js??ruleSet[1].rules[7].oneOf[14].use[1]!C:\LINO\node_modules\next\dist\build\webpack\loaders\postcss-loader\src\index.js??ruleSet[1].rules[7].oneOf[14].use[2]!C:\LINO\styles\globals.css': No serializer registered for PostCSSSyntaxError
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> PostCSSSyntaxError
+Failed to compile.
+
+./styles/globals.css:64:5
+Syntax error: C:\LINO\styles\globals.css The `ease-[cubic-bezier(0.22,` class does not exist. If `ease-[cubic-bezier(0.22,` is a custom class, make sure it is defined within a `@layer` directive.
+
+  62 | 
+  63 |   .reveal-element {
+> 64 |     @apply opacity-0 translate-y-12 transition-all duration-1000 ease-[cubic-bezier(0.22, 1, 0.36, 1)];
+     |     ^
+  65 |   }
+  66 | 
+
+./styles/globals.css
+Syntax error: C:\LINO\styles\globals.css The `ease-[0.22,` class does not exist. If `ease-[0.22,` is a custom class, make sure it is defined within a `@layer` directive. (64:5)
+
+  62 | 
+  63 |   .reveal-element {
+> 64 |     @apply opacity-0 translate-y-12 transition-all duration-1000 ease-[0.22, 1, 0.36, 1];
+     |     ^
+  65 |   }
+  66 | 
+
+    at tryRunOrWebpackError (C:\LINO\node_modules\next\dist\compiled\webpack\bundle5.js:28:312989)
+    at __webpack_require_module__ (C:\LINO\node_modules\next\dist\compiled\webpack\bundle5.js:28:131165)
+    at __nested_webpack_require_153728__ (C:\LINO\node_modules\next\dist\compiled\webpack\bundle5.js:28:130607)
+    at C:\LINO\node_modules\next\dist\compiled\webpack\bundle5.js:28:131454
+    at symbolIterator (C:\LINO\node_modules\next\dist\compiled\neo-async\async.js:1:14444)
+    at done (C:\LINO\node_modules\next\dist\compiled\neo-async\async.js:1:14824)
+    at Hook.eval [as callAsync] (eval at create (C:\LINO\node_modules\next\dist\compiled\webpack\bundle5.js:13:28858), <anonymous>:15:1)
+    at Hook.CALL_ASYNC_DELEGATE [as _callAsync] (C:\LINO\node_modules\next\dist\compiled\webpack\bundle5.js:13:26012)
+    at C:\LINO\node_modules\next\dist\compiled\webpack\bundle5.js:28:130328
+    at symbolIterator (C:\LINO\node_modules\next\dist\compiled\neo-async\async.js:1:14402)
+-- inner error --
+Syntax error: C:\LINO\styles\globals.css The `ease-[0.22,` class does not exist. If `ease-[0.22,` is a custom class, make sure it is defined within a `@layer` directive. (64:5)
+
+  62 | 
+  63 |   .reveal-element {
+> 64 |     @apply opacity-0 translate-y-12 transition-all duration-1000 ease-[0.22, 1, 0.36, 1];
+     |     ^
+  65 |   }
+  66 | 
+
+    at Object.<anonymous> (C:\LINO\node_modules\next\dist\build\webpack\loaders\css-loader\src\index.js??ruleSet[1].rules[7].oneOf[14].use[1]!C:\LINO\node_modules\next\dist\build\webpack\loaders\postcss-loader\src\index.js??ruleSet[1].rules[7].oneOf[14].use[2]!C:\LINO\styles\globals.css:1:7)
+    at C:\LINO\node_modules\next\dist\compiled\webpack\bundle5.js:28:922493
+    at Hook.eval [as call] (eval at create (C:\LINO\node_modules\next\dist\compiled\webpack\bundle5.js:13:28636), <anonymous>:7:1)
+    at Hook.CALL_DELEGATE [as _call] (C:\LINO\node_modules\next\dist\compiled\webpack\bundle5.js:13:25906)
+    at C:\LINO\node_modules\next\dist\compiled\webpack\bundle5.js:28:131198
+    at tryRunOrWebpackError (C:\LINO\node_modules\next\dist\compiled\webpack\bundle5.js:28:312943)
+    at __webpack_require_module__ (C:\LINO\node_modules\next\dist\compiled\webpack\bundle5.js:28:131165)
+    at __nested_webpack_require_153728__ (C:\LINO\node_modules\next\dist\compiled\webpack\bundle5.js:28:130607)
+    at C:\LINO\node_modules\next\dist\compiled\webpack\bundle5.js:28:131454
+    at symbolIterator (C:\LINO\node_modules\next\dist\compiled\neo-async\async.js:1:14444)
+
+Generated code for C:\LINO\node_modules\next\dist\build\webpack\loaders\css-loader\src\index.js??ruleSet[1].rules[7].oneOf[14].use[1]!C:\LINO\node_modules\next\dist\build\webpack\loaders\postcss-loader\src\index.js??ruleSet[1].rules[7].oneOf[14].use[2]!C:\LINO\styles\globals.css
+
+Import trace for requested module:
+./styles/globals.css
+
+
+> Build failed because of webpack errors

@@ -1,0 +1,25 @@
+  Γû▓ Next.js 14.2.26
+
+   Linting and checking validity of types ...
+   Creating an optimized production build ...
+Browserslist: browsers data (caniuse-lite) is 11 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+ Γ£ô Compiled successfully
+   Collecting page data ...
+   Generating static pages (0/3) ...
+ Γ£ô Generating static pages (3/3)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (pages)                             Size     First Load JS
+Γöî Γùï / (801 ms)                            9.5 kB         89.2 kB
+Γö£   /_app                                 0 B            79.7 kB
+Γöö Γùï /404                                  180 B          79.9 kB
++ First Load JS shared by all             86.2 kB
+  Γö£ chunks/framework-64ad27b21261a9ce.js  44.8 kB
+  Γö£ chunks/main-e30fe18e329541a0.js       32.2 kB
+  Γöö other shared chunks (total)           9.14 kB
+
+Γùï  (Static)  prerendered as static content
+

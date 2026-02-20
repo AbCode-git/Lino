@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: #1A1A1A;
+  --secondary-color: #D4AF37;
+  --accent-color: #E5C76B;
+  --dark-color: #0D0D0D;
+  --light-color: #FFFFF0;
+  --text-color: #E5E5E5;
+  --gold-gradient: linear-gradient(135deg, #D4AF37 0%, #E5C76B 50%, #B8860B 100%);
+  --transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.5s ease-in-out, border-color 0.5s ease-in-out, color 0.5s ease-in-out;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  --border-radius: 2px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-montserrat text-ivory/80 bg-primary min-h-screen selection:bg-gold selection:text-primary;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-playfair font-semibold text-gold;
+    text-wrap: balance;
+  }
+}
+
+@layer components {
+  .container {
+    @apply px-6 mx-auto max-w-7xl;
+  }
+
+  .section-header {
+    @apply text-center mb-12;
+  }
+
+  .section-header h2 {
+    @apply text-5xl md:text-6xl text-ivory mb-6 font-playfair;
+  }
+
+  .accent-line {
+    @apply w-20 h-[1px] bg-gold/50 mx-auto mb-8;
+  }
+
+  .section-header p {
+    @apply text-sm uppercase tracking-[0.3em] text-gold/60;
+  }
+
+  .cta-button {
+    @apply inline-block px-10 py-4 bg-gold text-primary font-bold uppercase tracking-widest text-xs transition-colors duration-500 hover:bg-ivory shadow-xl focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-primary outline-none;
+  }
+
+  .cta-button.outline {
+    @apply bg-transparent border border-ivory/20 text-ivory transition-all duration-500 hover:border-gold hover:text-gold shadow-none;
+    transition-property: border-color, color;
+  }
+
+  .reveal-element {
+    @apply opacity-0 translate-y-12 transition-all duration-1000;
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    transition-property: opacity, transform;
+  }
+
+  .reveal-element.active {
+    @apply opacity-100 translate-y-0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
