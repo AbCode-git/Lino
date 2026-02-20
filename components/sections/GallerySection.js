@@ -221,75 +221,76 @@ export default function GallerySection() {
         )}
       </AnimatePresence>
 
-      {/* 3D Portfolio Card Component Internal Scope */}
-      {function PortfolioCard({ item, index, onClick }) {
-        const cardRef = useRef(null);
-        const x = useMotionValue(0);
-        const y = useMotionValue(0);
-
-        const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [10, -10]), { damping: 20, stiffness: 150 });
-        const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-10, 10]), { damping: 20, stiffness: 150 });
-
-        function onMouseMove(event) {
-          const rect = cardRef.current.getBoundingClientRect();
-          const centerX = rect.left + rect.width / 2;
-          const centerY = rect.top + rect.height / 2;
-          x.set((event.clientX - centerX) / rect.width);
-          y.set((event.clientY - centerY) / rect.height);
-        }
-
-        function onMouseLeave() {
-          x.set(0);
-          y.set(0);
-        }
-
-        const getAspectRatio = (idx) => {
-          const pattern = [
-            'aspect-[3/4]', 'aspect-[4/5]', 'aspect-[2/3]', 'aspect-square',
-            'aspect-[4/5]', 'aspect-[3/5]', 'aspect-[3/4]'
-          ];
-          return pattern[idx % pattern.length];
-        };
-
-        return (
-          <motion.div
-            ref={cardRef}
-            layout
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            style={{ rotateX, rotateY, perspective: 1000 }}
-            className={`group relative w-full ${getAspectRatio(index)} mb-4 md:mb-6 break-inside-avoid overflow-hidden bg-primary-dark border border-ivory/5 cursor-pointer z-10 transition-shadow duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)]`}
-            onMouseMove={onMouseMove}
-            onMouseLeave={onMouseLeave}
-            onClick={onClick}
-          >
-            <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors duration-700 z-10"></div>
-            <motion.div
-              initial={{ scaleY: 1 }}
-              whileInView={{ scaleY: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1], delay: (index % 3) * 0.1 }}
-              className="absolute inset-0 bg-ivory/5 z-20 origin-top pointer-events-none"
-            />
-            <OptimizedImage
-              src={item.image}
-              alt={item.title}
-              fill
-              objectFit="cover"
-              className="grayscale transition-transform duration-1000 group-hover:scale-110 group-hover:grayscale-0 contrast-[1.1]"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 flex flex-col justify-end p-6 md:p-10 z-20">
-              <span className="text-gold text-[10px] uppercase tracking-widest mb-3 font-bold">{item.category}</span>
-              <h3 className="text-xl md:text-3xl text-ivory font-playfair mb-3 leading-tight tracking-wide">{item.title}</h3>
-              <p className="text-ivory/60 text-xs font-light tracking-widest uppercase opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-700 delay-100 lowercase italic">
-                {item.description}
-              </p>
-            </div>
-          </motion.div>
-        );
-      }}
     </section>
+  );
+}
+
+// Separate component for 3D Tilt effect and local state
+function PortfolioCard({ item, index, onClick }) {
+  const cardRef = useRef(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [10, -10]), { damping: 20, stiffness: 150 });
+  const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-10, 10]), { damping: 20, stiffness: 150 });
+
+  function onMouseMove(event) {
+    const rect = cardRef.current.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    x.set((event.clientX - centerX) / rect.width);
+    y.set((event.clientY - centerY) / rect.height);
+  }
+
+  function onMouseLeave() {
+    x.set(0);
+    y.set(0);
+  }
+
+  const getAspectRatio = (idx) => {
+    const pattern = [
+      'aspect-[3/4]', 'aspect-[4/5]', 'aspect-[2/3]', 'aspect-square',
+      'aspect-[4/5]', 'aspect-[3/5]', 'aspect-[3/4]'
+    ];
+    return pattern[idx % pattern.length];
+  };
+
+  return (
+    <motion.div
+      ref={cardRef}
+      layout
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+      style={{ rotateX, rotateY, perspective: 1000 }}
+      className={`group relative w-full ${getAspectRatio(index)} mb-4 md:mb-6 break-inside-avoid overflow-hidden bg-primary-dark border border-ivory/5 cursor-pointer z-10 transition-shadow duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)]`}
+      onMouseMove={onMouseMove}
+      onMouseLeave={onMouseLeave}
+      onClick={onClick}
+    >
+      <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors duration-700 z-10"></div>
+      <motion.div
+        initial={{ scaleY: 1 }}
+        whileInView={{ scaleY: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1], delay: (index % 3) * 0.1 }}
+        className="absolute inset-0 bg-ivory/5 z-20 origin-top pointer-events-none"
+      />
+      <OptimizedImage
+        src={item.image}
+        alt={item.title}
+        fill
+        objectFit="cover"
+        className="grayscale transition-transform duration-1000 group-hover:scale-110 group-hover:grayscale-0 contrast-[1.1]"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 flex flex-col justify-end p-6 md:p-10 z-20">
+        <span className="text-gold text-[10px] uppercase tracking-widest mb-3 font-bold">{item.category}</span>
+        <h3 className="text-xl md:text-3xl text-ivory font-playfair mb-3 leading-tight tracking-wide">{item.title}</h3>
+        <p className="text-ivory/60 text-xs font-light tracking-widest uppercase opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-700 delay-100 lowercase italic">
+          {item.description}
+        </p>
+      </div>
+    </motion.div>
   );
 }
