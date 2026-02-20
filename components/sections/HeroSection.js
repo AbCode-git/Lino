@@ -1,9 +1,16 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 export default function HeroSection() {
   const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"]
+  });
+
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, 200]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   // Animation variants
   const textVariants = {
@@ -36,7 +43,10 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/50 to-transparent"></div>
       </div>
 
-      <div className="hero-content relative z-[2] max-w-[800px]">
+      <motion.div
+        className="hero-content relative z-[2] max-w-[800px]"
+        style={{ y: y1, opacity }}
+      >
         <motion.div
           initial="hidden"
           animate="visible"
@@ -88,7 +98,7 @@ export default function HeroSection() {
             The Atelier
           </Link>
         </motion.div>
-      </div>
+      </motion.div>
 
       {/* Decorative vertical line */}
       <div className="absolute left-[5%] bottom-10 h-32 w-[1px] bg-gold/20 hidden lg:block">

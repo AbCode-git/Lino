@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useInView } from 'react-intersection-observer';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import OptimizedImage from '../ui/OptimizedImage';
 
 const galleryItems = [
@@ -53,8 +53,17 @@ const filterCategories = [
 export default function GallerySection() {
   const [activeFilter, setActiveFilter] = useState('all');
   const [selectedImage, setSelectedImage] = useState(null);
+  const sectionRef = useRef(null);
 
-  const { ref: sectionRef, inView } = useInView({
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, -50]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, 50]);
+
+  const { ref: inViewRef, inView } = useInView({
     threshold: 0.1,
     triggerOnce: true
   });
@@ -65,7 +74,7 @@ export default function GallerySection() {
 
   return (
     <section id="gallery" className="gallery py-32 bg-primary" ref={sectionRef}>
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-6" ref={inViewRef}>
         <div className="text-center mb-20">
           <span className="text-gold text-xs uppercase tracking-[0.4em] font-montserrat block mb-4">The Portfolio</span>
           <h2 className={`text-5xl md:text-7xl text-ivory font-playfair mb-8 reveal-element ${inView ? 'active' : ''}`}>
@@ -76,7 +85,7 @@ export default function GallerySection() {
             {filterCategories.map((category, index) => (
               <button
                 key={index}
-                className={`text-[10px] uppercase tracking-[0.3em] transition-colors relative pb-2 ${activeFilter === category.value ? 'text-gold' : 'text-ivory/40 hover:text-ivory focus-visible:text-ivory'} outline-none`}
+                className={`text-[10px] uppercase tracking-[0.3em] font-montserrat transition-colors relative pb-2 ${activeFilter === category.value ? 'text-gold' : 'text-ivory/40 hover:text-ivory focus-visible:text-ivory'} outline-none`}
                 onClick={() => setActiveFilter(category.value)}
               >
                 {category.label}
@@ -96,6 +105,7 @@ export default function GallerySection() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
+              style={{ y: index % 2 === 0 ? y1 : y2 }}
               className="group relative aspect-[3/4] overflow-hidden bg-primary-dark border border-ivory/5 cursor-pointer"
               onClick={() => setSelectedImage(item)}
             >

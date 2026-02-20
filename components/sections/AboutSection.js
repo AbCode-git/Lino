@@ -1,20 +1,33 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { useInView } from 'react-intersection-observer';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import OptimizedImage from '../ui/OptimizedImage';
 import Link from 'next/link';
 
 export default function AboutSection() {
-  const { ref: sectionRef, inView } = useInView({
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  const yImage = useTransform(scrollYProgress, [0, 1], [-50, 50]);
+  const yFrame = useTransform(scrollYProgress, [0, 1], [0, 100]);
+
+  const { ref: inViewRef, inView } = useInView({
     threshold: 0.1,
     triggerOnce: true
   });
 
   return (
     <section id="about" className="about py-32 bg-primary-dark overflow-hidden" ref={sectionRef}>
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-6" ref={inViewRef}>
         <div className="flex flex-col lg:flex-row items-center gap-20">
           <div className="lg:w-1/2 relative">
-            <div className={`relative z-10 reveal-element ${inView ? 'active' : ''}`}>
+            <motion.div
+              className={`relative z-10 reveal-element ${inView ? 'active' : ''}`}
+              style={{ y: yImage }}
+            >
               <OptimizedImage
                 src="/images/lulit-profile.jpg"
                 alt="Lulit - Certified Makeup Artist"
@@ -22,14 +35,17 @@ export default function AboutSection() {
                 height={800}
                 className="grayscale hover:grayscale-0 transition-all duration-1000 border border-ivory/10 shadow-2xl"
               />
-            </div>
+            </motion.div>
             {/* Experience Badge */}
             <div className={`absolute -bottom-10 -right-10 bg-gold p-8 z-20 reveal-element ${inView ? 'active' : ''}`} style={{ transitionDelay: '300ms' }}>
               <span className="block text-4xl font-playfair text-primary font-bold leading-none">6+</span>
               <span className="text-[10px] text-primary/80 uppercase tracking-widest font-bold">Years of Artistry</span>
             </div>
             {/* Decorative frame */}
-            <div className="absolute top-10 -left-10 w-full h-full border border-gold/20 -z-10"></div>
+            <motion.div
+              className="absolute top-10 -left-10 w-full h-full border border-gold/20 -z-10"
+              style={{ y: yFrame }}
+            ></motion.div>
           </div>
 
           <div className="lg:w-1/2">
