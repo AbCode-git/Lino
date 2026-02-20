@@ -1,25 +1,15 @@
 import { useState, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { motion } from 'framer-motion';
+import BookingCalendar from '../shared/BookingCalendar';
+import TimeSlotPicker from '../shared/TimeSlotPicker';
 
 export default function AppointmentSection() {
   const [mounted, setMounted] = useState(false);
-
-  // Form state
-  const [appointmentData, setAppointmentData] = useState({
-    name: '',
-    phone: '+251',
-    service: '',
-    date: '',
-    time: '',
-    notes: ''
-  });
-
-  const [today, setToday] = useState('');
+  const [bookedSlots, setBookedSlots] = useState([]);
 
   useEffect(() => {
     setMounted(true);
-    setToday(new Date().toISOString().split('T')[0]);
   }, []);
 
   // Available time slots
@@ -47,12 +37,39 @@ export default function AppointmentSection() {
     triggerOnce: true
   });
 
+  // Fetch booked slots whenever the date changes
+  useEffect(() => {
+    if (appointmentData.date) {
+      fetchAvailability(appointmentData.date);
+    }
+  }, [appointmentData.date]);
+
+  const fetchAvailability = async (date) => {
+    try {
+      const response = await fetch(`/api/check-availability?date=${date}`);
+      const result = await response.json();
+      if (result.success) {
+        setBookedSlots(result.takenSlots);
+      }
+    } catch (error) {
+      console.error('Failed to fetch availability:', error);
+    }
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setAppointmentData(prev => ({
       ...prev,
       [name]: value
     }));
+  };
+
+  const handleDateSelect = (date) => {
+    setAppointmentData(prev => ({ ...prev, date, time: '' })); // Reset time when date changes
+  };
+
+  const handleTimeSelect = (time) => {
+    setAppointmentData(prev => ({ ...prev, time }));
   };
 
   const handleSubmit = async (e) => {
@@ -196,44 +213,28 @@ export default function AppointmentSection() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="space-y-2">
-                  <label htmlFor="apt_date" className="text-gold text-[10px] uppercase tracking-[0.2em] font-bold">Preferred Date</label>
-                  <input
-                    type="date"
-                    id="apt_date"
-                    name="date"
-                    value={appointmentData.date}
-                    onChange={handleChange}
-                    min={today}
-                    className="w-full bg-transparent border-b border-ivory/10 py-3 text-ivory/80 focus:border-gold focus-visible:border-gold outline-none transition-all duration-500 font-light color-scheme-dark transition-property-[border-color]"
-                    required
+              <div className="space-y-6">
+                <div>
+                  <label className="text-gold text-[10px] uppercase tracking-[0.2em] font-bold block mb-4">Select Date</label>
+                  <BookingCalendar
+                    selectedDate={appointmentData.date}
+                    onDateSelect={handleDateSelect}
                   />
                 </div>
 
-                <div className="space-y-2">
-                  <label htmlFor="apt_time" className="text-gold text-[10px] uppercase tracking-[0.2em] font-bold">Aesthetic Time</label>
-                  <div className="relative group">
-                    <select
-                      id="apt_time"
-                      name="time"
-                      value={appointmentData.time}
-                      onChange={handleChange}
-                      className="w-full bg-transparent border-b border-ivory/10 py-3 text-ivory/80 focus:border-gold focus-visible:border-gold outline-none transition-all duration-500 font-light appearance-none transition-property-[border-color] pr-8"
-                      required
-                    >
-                      <option value="" className="bg-primary text-ivory/20">Choose Time</option>
-                      {timeSlots.map((time, index) => (
-                        <option key={index} value={time} className="bg-primary text-ivory/80">{time}</option>
-                      ))}
-                    </select>
-                    <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none text-gold/40 group-focus-within:text-gold transition-colors duration-500">
-                      <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
+                {appointmentData.date && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                  >
+                    <TimeSlotPicker
+                      slots={timeSlots}
+                      selectedTime={appointmentData.time}
+                      bookedSlots={bookedSlots}
+                      onTimeSelect={handleTimeSelect}
+                    />
+                  </motion.div>
+                )}
               </div>
 
               <div className="space-y-2">
