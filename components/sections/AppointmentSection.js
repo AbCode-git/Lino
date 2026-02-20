@@ -6,6 +6,14 @@ import TimeSlotPicker from '../shared/TimeSlotPicker';
 
 export default function AppointmentSection() {
   const [mounted, setMounted] = useState(false);
+  const [appointmentData, setAppointmentData] = useState({
+    name: '',
+    phone: '+251',
+    service: '',
+    date: '',
+    time: '',
+    notes: ''
+  });
   const [bookedSlots, setBookedSlots] = useState([]);
 
   useEffect(() => {
