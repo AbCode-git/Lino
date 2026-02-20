@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
+import { Analytics } from "@vercel/analytics/react";
 import '../styles/globals.css';
 
 // Import fonts
@@ -29,7 +30,7 @@ function MyApp({ Component, pageProps }) {
     };
     const handleComplete = () => {
       // Remove loading state if needed
-      
+
       // Initialize scroll reveal animation
       const revealElements = document.querySelectorAll('.reveal-element');
       const observer = new IntersectionObserver((entries) => {
@@ -39,7 +40,7 @@ function MyApp({ Component, pageProps }) {
           }
         });
       }, { threshold: 0.1 });
-      
+
       revealElements.forEach(el => observer.observe(el));
     };
 
@@ -62,6 +63,7 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <div className={`${montserrat.variable} ${cormorant.variable}`}>
         <Component {...pageProps} />
+        <Analytics />
       </div>
     </>
   );
