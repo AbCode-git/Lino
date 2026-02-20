@@ -14,8 +14,8 @@ export default function Footer() {
   return (
     <footer className="bg-primary pt-24 pb-12 border-t border-ivory/5">
       <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
-          <div className="col-span-1 lg:col-span-1">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 mb-20">
+          <div className="col-span-1">
             <Link href="/" className="group inline-block mb-8">
               <div className="flex flex-col">
                 <h2 className="text-3xl font-playfair font-bold text-gold tracking-[0.2em] group-hover:text-ivory transition-colors">LINO</h2>
@@ -60,32 +60,6 @@ export default function Footer() {
               <li className="hover:text-ivory transition-colors cursor-default">Mariée Atelier</li>
               <li className="hover:text-ivory transition-colors cursor-default">Editorial Shoots</li>
             </ul>
-          </div>
-
-          <div>
-            <h3 className="text-gold text-[10px] uppercase tracking-[0.3em] font-bold mb-8">The Journal</h3>
-            <p className="text-ivory/40 text-sm font-light mb-8">Subscribe to receive insights on artistry & private session availability.</p>
-            <form className="relative group" onSubmit={handleSubmit}>
-              <input
-                type="email"
-                name="newsletter_email"
-                id="footer-newsletter-email"
-                autoComplete="email"
-                placeholder="Enter email address…"
-                required
-                className="w-full bg-transparent border-b border-ivory/10 py-4 text-ivory/80 focus:border-gold focus-visible:border-gold outline-none transition-all font-light text-[10px] tracking-widest placeholder:text-ivory/20"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                spellCheck={false}
-              />
-              <button
-                type="submit"
-                className="absolute right-0 bottom-4 text-gold/40 hover:text-gold transition-colors focus-visible:text-gold outline-none"
-                aria-label="Subscribe to newsletter"
-              >
-                <FaPaperPlane size={14} />
-              </button>
-            </form>
           </div>
         </div>
 
