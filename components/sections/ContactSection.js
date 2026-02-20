@@ -76,7 +76,7 @@ export default function ContactSection() {
             <div className={`space-y-12 reveal-element ${inView ? 'active' : ''}`} style={{ transitionDelay: '200ms' }}>
               <div>
                 <h3 className="text-gold text-[10px] uppercase tracking-widest mb-4 font-bold">The Studio</h3>
-                <p className="text-ivory font-light text-xl">Meskel Square, Estifanos building<br />Addis Ababa, Ethiopia</p>
+                <p className="text-ivory font-light text-lg leading-relaxed">Tropical Mall, Bole road<br />Next to Hebir Ethiopia, 3rd Floor, 305<br />Addis Ababa, Ethiopia</p>
               </div>
               <div>
                 <h3 className="text-gold text-[10px] uppercase tracking-widest mb-4 font-bold">Direct Line</h3>
