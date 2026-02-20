@@ -25,7 +25,7 @@ export default function AboutSection() {
             </div>
             {/* Experience Badge */}
             <div className={`absolute -bottom-10 -right-10 bg-gold p-8 z-20 reveal-element ${inView ? 'active' : ''}`} style={{ transitionDelay: '300ms' }}>
-              <span className="block text-4xl font-playfair text-primary font-bold leading-none">10+</span>
+              <span className="block text-4xl font-playfair text-primary font-bold leading-none">6+</span>
               <span className="text-[10px] text-primary/80 uppercase tracking-widest font-bold">Years of Artistry</span>
             </div>
             {/* Decorative frame */}
@@ -40,7 +40,7 @@ export default function AboutSection() {
 
             <div className={`space-y-6 text-ivory/60 font-light leading-relaxed reveal-element ${inView ? 'active' : ''}`} style={{ transitionDelay: '200ms' }}>
               <p>
-                Lino Beauty represents the culmination of a decade-long journey in professional makeup artistry. Led by Lulit, a certified specialist in high-fashion and bridal aesthetics, our studio is dedicated to the belief that beauty is an individual masterpiece.
+                Lino Beauty represents the culmination of a six-year journey in professional makeup artistry. Led by Lulit, a certified specialist in high-fashion and bridal aesthetics, our studio is dedicated to the belief that beauty is an individual masterpiece.
               </p>
               <p>
                 We eschew the generic for the bespoke, blending contemporary techniques with a classic understanding of structure and light. Every session is a private atelier experience, tailored to evoke your most sophisticated self.
