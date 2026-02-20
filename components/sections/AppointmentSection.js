@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useInView } from 'react-intersection-observer';
 import { motion } from 'framer-motion';
 import BookingCalendar from '../shared/BookingCalendar';
 import TimeSlotPicker from '../shared/TimeSlotPicker';
@@ -114,25 +113,55 @@ export default function AppointmentSection() {
   };
 
   // Prevent rendering transition states until mounted to avoid hydration mismatch
-  const canShow = mounted && inView;
+  const canShow = mounted;
 
   return (
-    <section id="reservations" className="appointment py-32 bg-primary" ref={sectionRef}>
+    <section id="reservations" className="appointment py-32 bg-primary">
       <div className="container mx-auto px-6">
         <div className="text-center mb-20">
-          <span className="text-gold text-xs uppercase tracking-[0.4em] font-montserrat block mb-4">Reservations</span>
-          <h2 className={`text-5xl md:text-7xl text-ivory font-playfair mb-8 reveal-element ${canShow ? 'active' : ''}`}>
+          <motion.span
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-gold text-xs uppercase tracking-[0.4em] font-montserrat block mb-4"
+          >
+            Reservations
+          </motion.span>
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            className="text-5xl md:text-7xl text-ivory font-playfair mb-8"
+          >
             Explore Your <span className="italic font-light text-gold">Transformation</span>
-          </h2>
-          <div className={`w-20 h-[1px] bg-gold/30 mx-auto mb-8 reveal-element ${canShow ? 'active' : ''}`} style={{ transitionDelay: '100ms' }}></div>
-          <p className={`text-ivory/40 text-sm uppercase tracking-[0.2em] max-w-lg mx-auto reveal-element ${canShow ? 'active' : ''}`} style={{ transitionDelay: '200ms' }}>
+          </motion.h2>
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="w-20 h-[1px] bg-gold/30 mx-auto mb-8"
+          ></motion.div>
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.3 }}
+            className="text-ivory/40 text-sm uppercase tracking-[0.2em] max-w-lg mx-auto"
+          >
             Bespoke artistry tailored to your unique essence.
-          </p>
+          </motion.p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mt-12">
           {/* Info Side */}
-          <div className={`reveal-element ${canShow ? 'active' : ''}`} style={{ transitionDelay: '300ms' }}>
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.4 }}
+          >
             <h3 className="text-gold text-[10px] uppercase tracking-[0.3em] font-bold mb-12">The Process</h3>
 
             <div className="space-y-12">
@@ -156,10 +185,16 @@ export default function AppointmentSection() {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Form Side */}
-          <div className={`bg-primary-light p-10 md:p-12 border border-ivory/5 reveal-element ${canShow ? 'active' : ''}`} style={{ transitionDelay: '400ms' }}>
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.5 }}
+            className="bg-primary-light p-10 md:p-12 border border-ivory/5"
+          >
             <h3 className="text-ivory font-playfair text-3xl mb-10 tracking-wide">Schedule Session</h3>
 
             <form onSubmit={handleSubmit} className="space-y-8">
@@ -286,7 +321,7 @@ export default function AppointmentSection() {
                 </motion.div>
               )}
             </form>
-          </div>
+          </motion.div>
         </div>
       </div>
       <style jsx>{`

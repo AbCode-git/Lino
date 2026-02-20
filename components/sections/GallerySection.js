@@ -1,5 +1,4 @@
 import { useState, useRef } from 'react';
-import { useInView } from 'react-intersection-observer';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import OptimizedImage from '../ui/OptimizedImage';
 
@@ -106,18 +105,30 @@ export default function GallerySection() {
 
   return (
     <section id="gallery" className="gallery py-32 bg-primary" ref={sectionRef}>
-      <div className="container mx-auto px-6" ref={inViewRef}>
+      <div className="container mx-auto px-6">
         <div className="text-center mb-20">
           <span className="text-gold text-xs uppercase tracking-[0.4em] font-montserrat block mb-4">The Portfolio</span>
-          <h2 className={`text-5xl md:text-7xl text-ivory font-playfair mb-8 reveal-element ${inView ? 'active' : ''}`}>
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            className="text-5xl md:text-7xl text-ivory font-playfair mb-8"
+          >
             Our <span className="italic font-light text-gold">Artistry</span>
-          </h2>
+          </motion.h2>
 
-          <div className={`flex flex-wrap justify-center gap-8 mt-12 reveal-element ${inView ? 'active' : ''}`}>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="flex flex-wrap justify-center gap-8 mt-12"
+          >
             {filterCategories.map((category, index) => (
               <button
                 key={index}
-                className={`text-[10px] uppercase tracking-[0.3em] font-montserrat transition-colors relative pb-2 ${activeFilter === category.value ? 'text-gold' : 'text-ivory/40 hover:text-ivory focus-visible:text-ivory'} outline-none`}
+                className={`text - [10px] uppercase tracking - [0.3em] font - montserrat transition - colors relative pb - 2 ${activeFilter === category.value ? 'text-gold' : 'text-ivory/40 hover:text-ivory focus-visible:text-ivory'} outline - none`}
                 onClick={() => setActiveFilter(category.value)}
               >
                 {category.label}
@@ -126,17 +137,18 @@ export default function GallerySection() {
                 )}
               </button>
             ))}
-          </div>
+          </motion.div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-12">
           {filteredItems.map((item, index) => (
             <motion.div
-              key={`${item.title}-${index}`}
+              key={`${item.title} -${index} `}
               layout
               initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.8, delay: (index % 3) * 0.1 }}
               style={{ y: index % 2 === 0 ? y1 : y2 }}
               className="group relative aspect-[3/4] overflow-hidden bg-primary-dark border border-ivory/5 cursor-pointer"
               onClick={() => setSelectedImage(item)}

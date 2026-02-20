@@ -18,27 +18,6 @@ const AboutSection = dynamic(() => import('../components/sections/AboutSection')
 const ContactSection = dynamic(() => import('../components/sections/ContactSection'), { ssr: false });
 
 export default function Home() {
-  // Initialize scroll reveal animation
-  useEffect(() => {
-    const revealElements = document.querySelectorAll('.reveal-element');
-
-    if (revealElements.length > 0) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-          }
-        });
-      }, { threshold: 0.1 });
-
-      revealElements.forEach(el => observer.observe(el));
-
-      return () => {
-        revealElements.forEach(el => observer.unobserve(el));
-      };
-    }
-  }, []);
-
   return (
     <>
       <Head>
