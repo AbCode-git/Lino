@@ -161,15 +161,17 @@ export default function GallerySection() {
             style={{ background: spotlightBg }}
           />
 
-          {filteredItems.map((item, index) => (
-            <PortfolioCard
-              key={`${item.title}-${index}`}
-              item={item}
-              index={index}
-              yOffset={index % 2 === 0 ? y1 : y2}
-              onClick={() => setSelectedImage(item)}
-            />
-          ))}
+          <AnimatePresence mode="popLayout" initial={false}>
+            {filteredItems.map((item, index) => (
+              <PortfolioCard
+                key={`${item.title}-${index}`}
+                item={item}
+                index={index}
+                yOffset={index % 2 === 0 ? y1 : y2}
+                onClick={() => setSelectedImage(item)}
+              />
+            ))}
+          </AnimatePresence>
         </div>
       </div>
 
@@ -281,6 +283,16 @@ function PortfolioCard({ item, index, yOffset, onClick }) {
       onClick={onClick}
     >
       <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors duration-700 z-10"></div>
+
+      {/* Curtain reveal overlay */}
+      <motion.div
+        initial={{ scaleY: 1 }}
+        whileInView={{ scaleY: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1], delay: (index % 3) * 0.1 }}
+        className="absolute inset-0 bg-ivory/5 z-20 origin-top pointer-events-none"
+      />
+
       <OptimizedImage
         src={item.image}
         alt={item.title}
