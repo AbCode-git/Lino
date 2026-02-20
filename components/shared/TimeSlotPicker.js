@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 export default function TimeSlotPicker({ slots, selectedTime, bookedSlots = [], onTimeSelect }) {
     return (
         <div className="time-slot-picker">
-            <h4 className="text-gold text-[10px] uppercase tracking-[0.2em] font-bold mb-6">Aesthetic Time</h4>
+            <h4 className="text-gold text-[10px] uppercase tracking-[0.2em] font-bold mb-6">Time</h4>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
                 {slots.map((time) => {
                     const isBooked = bookedSlots.includes(time);
