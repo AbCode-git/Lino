@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { motion, AnimatePresence, useScroll, useTransform, useSpring, useMotionValue } from 'framer-motion';
+import { motion, AnimatePresence, useSpring, useMotionValue } from 'framer-motion';
 import OptimizedImage from '../ui/OptimizedImage';
 
 /**
@@ -92,14 +92,6 @@ export default function GallerySection() {
   const [selectedImage, setSelectedImage] = useState(null);
   const sectionRef = useRef(null);
 
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  });
-
-  const y1 = useTransform(scrollYProgress, [0, 1], [0, -50]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, 50]);
-
   // Noir Spotlight Logic
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -173,7 +165,6 @@ export default function GallerySection() {
                 key={item.image}
                 item={item}
                 index={index}
-                yOffset={index % 2 === 0 ? y1 : y2}
                 onClick={() => setSelectedImage(item)}
               />
             ))}
@@ -234,7 +225,7 @@ export default function GallerySection() {
 }
 
 // Separate component for 3D Tilt effect and local state
-function PortfolioCard({ item, index, yOffset, onClick }) {
+function PortfolioCard({ item, index, onClick }) {
   const cardRef = useRef(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -262,9 +253,9 @@ function PortfolioCard({ item, index, yOffset, onClick }) {
       'md:col-span-8', // Large
       'md:col-span-5', // Medium
       'md:col-span-7', // Medium-Large
-      'md:col-span-12', // Hero Full
       'md:col-span-6', // Half
       'md:col-span-6', // Half
+      'md:col-span-4', // Small
     ];
     return pattern[idx % pattern.length];
   };
@@ -278,7 +269,6 @@ function PortfolioCard({ item, index, yOffset, onClick }) {
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
       style={{
-        y: yOffset,
         rotateX,
         rotateY,
         perspective: 1000
