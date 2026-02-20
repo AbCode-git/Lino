@@ -47,7 +47,7 @@ export default function ServicesSection() {
           <div className="max-w-2xl">
             <span className="text-gold text-xs uppercase tracking-[0.3em] font-montserrat block mb-4">The Collection</span>
             <h2 className={`text-5xl md:text-7xl text-ivory font-playfair leading-tight reveal-element ${inView ? 'active' : ''}`}>
-              Bespoke <span className="italic font-light text-gold">Services</span>
+              Services
             </h2>
           </div>
           <p className={`text-ivory/40 text-sm max-w-sm mb-4 reveal-element ${inView ? 'active' : ''}`} style={{ transitionDelay: '200ms' }}>
