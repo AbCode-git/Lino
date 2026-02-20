@@ -29,7 +29,7 @@ export default function HeroSection() {
           muted
           loop
           playsInline
-          className="absolute w-full h-full object-cover opacity-30 grayscale"
+          className="absolute w-full h-full object-cover opacity-30"
         >
           <source src="/videos/interior.mp4" type="video/mp4" />
         </video>
