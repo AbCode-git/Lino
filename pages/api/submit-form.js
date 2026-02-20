@@ -45,8 +45,7 @@ function formatTelegramMessage(type, data) {
     if (type === 'appointment') {
         body = `
 *Name:* ${data.name}
-*Email:* ${data.email}
-*Phone:* ${data.phone}
+${data.email ? `*Email:* ${data.email}\n` : ''}*Phone:* ${data.phone}
 *Service:* ${data.service}
 *Date:* ${data.date}
 *Time:* ${data.time}
@@ -54,8 +53,7 @@ function formatTelegramMessage(type, data) {
     } else {
         body = `
 *Name:* ${data.name}
-*Email:* ${data.email}
-*Type:* ${data.type}
+${data.email ? `*Email:* ${data.email}\n` : ''}*Type:* ${data.type}
 *Message:* ${data.message}`;
     }
 

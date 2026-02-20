@@ -8,7 +8,6 @@ export default function AppointmentSection() {
   // Form state
   const [appointmentData, setAppointmentData] = useState({
     name: '',
-    email: '',
     phone: '+251',
     service: '',
     date: '',
@@ -76,7 +75,7 @@ export default function AppointmentSection() {
       if (result.success) {
         setSubmitStatus('success');
         setAppointmentData({
-          name: '', email: '', phone: '', service: '', date: '', time: '', notes: ''
+          name: '', phone: '+251', service: '', date: '', time: '', notes: ''
         });
       } else {
         throw new Error(result.message);
@@ -139,7 +138,7 @@ export default function AppointmentSection() {
             <h3 className="text-ivory font-playfair text-3xl mb-10 tracking-wide">Schedule Session</h3>
 
             <form onSubmit={handleSubmit} className="space-y-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 gap-8">
                 <div className="space-y-2">
                   <label htmlFor="apt_name" className="text-gold text-[10px] uppercase tracking-[0.2em] font-bold">Full Name</label>
                   <input
@@ -152,22 +151,6 @@ export default function AppointmentSection() {
                     className="w-full bg-transparent border-b border-ivory/10 py-3 text-ivory/80 focus:border-gold focus-visible:border-gold outline-none transition-all duration-500 font-light placeholder:text-ivory/20 transition-property-[border-color]"
                     placeholder="e.g., Alexander McQueen…"
                     required
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <label htmlFor="apt_email" className="text-gold text-[10px] uppercase tracking-[0.2em] font-bold">Email Address</label>
-                  <input
-                    type="email"
-                    id="apt_email"
-                    name="email"
-                    autoComplete="email"
-                    value={appointmentData.email}
-                    onChange={handleChange}
-                    className="w-full bg-transparent border-b border-ivory/10 py-3 text-ivory/80 focus:border-gold focus-visible:border-gold outline-none transition-all duration-500 font-light placeholder:text-ivory/20 transition-property-[border-color]"
-                    placeholder="studio@lino.com…"
-                    required
-                    spellCheck={false}
                   />
                 </div>
               </div>

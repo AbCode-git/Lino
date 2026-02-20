@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 export default function ContactSection() {
   const [formData, setFormData] = useState({
     name: '',
-    email: '',
     type: 'Bridal Session',
     message: ''
   });
@@ -38,7 +37,6 @@ export default function ContactSection() {
           type: 'contact',
           data: {
             name: formData.name,
-            email: formData.email,
             type: formData.type,
             message: formData.message
           }
@@ -51,7 +49,6 @@ export default function ContactSection() {
         setSubmitStatus('success');
         setFormData({
           name: '',
-          email: '',
           type: 'Bridal Session',
           message: ''
         });
@@ -83,7 +80,7 @@ export default function ContactSection() {
               </div>
               <div>
                 <h3 className="text-gold text-[10px] uppercase tracking-widest mb-4 font-bold">Direct Line</h3>
-                <p className="text-ivory font-light text-xl">+251 911 234 567<br />hello@linobeauty.com</p>
+                <p className="text-ivory font-light text-xl">+251 91 122 5134</p>
               </div>
               <div>
                 <h3 className="text-gold text-[10px] uppercase tracking-widest mb-4 font-bold">Hours</h3>
@@ -94,7 +91,7 @@ export default function ContactSection() {
 
           <div className="lg:w-2/3">
             <form onSubmit={handleSubmit} className={`space-y-8 bg-primary-dark p-12 border border-ivory/5 shadow-2xl reveal-element ${inView ? 'active' : ''}`} style={{ transitionDelay: '300ms' }}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+              <div className="grid grid-cols-1 gap-12">
                 <div className="space-y-2 group">
                   <label htmlFor="contact_name" className="text-[10px] text-gold uppercase tracking-widest font-bold group-focus-within:text-ivory transition-colors">Full Name</label>
                   <input
@@ -107,21 +104,6 @@ export default function ContactSection() {
                     className="w-full bg-transparent border-b border-ivory/10 py-4 text-ivory focus:border-gold focus-visible:border-gold outline-none transition-all duration-500 font-light placeholder:text-ivory/10 transition-property-[border-color]"
                     placeholder="e.g., Janice Doe…"
                     required
-                  />
-                </div>
-                <div className="space-y-2 group">
-                  <label htmlFor="contact_email" className="text-[10px] text-gold uppercase tracking-widest font-bold group-focus-within:text-ivory transition-colors">Email Address</label>
-                  <input
-                    type="email"
-                    id="contact_email"
-                    name="email"
-                    autoComplete="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full bg-transparent border-b border-ivory/10 py-4 text-ivory focus:border-gold focus-visible:border-gold outline-none transition-all duration-500 font-light placeholder:text-ivory/10 transition-property-[border-color]"
-                    placeholder="janice@atelier.com…"
-                    required
-                    spellCheck={false}
                   />
                 </div>
               </div>
