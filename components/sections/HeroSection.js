@@ -75,10 +75,10 @@ export default function HeroSection() {
           variants={textVariants}
         >
           <Link
-            href="/#contact"
+            href="/#reservations"
             className="px-10 py-4 bg-gold text-primary font-bold uppercase tracking-widest text-xs transition-colors duration-500 hover:bg-ivory focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-primary outline-none"
           >
-            Request Private Session
+            Book a Session
           </Link>
           <Link
             href="/#services"

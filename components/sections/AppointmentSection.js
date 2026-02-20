@@ -93,7 +93,7 @@ export default function AppointmentSection() {
   const canShow = mounted && inView;
 
   return (
-    <section id="appointment" className="appointment py-32 bg-primary" ref={sectionRef}>
+    <section id="reservations" className="appointment py-32 bg-primary" ref={sectionRef}>
       <div className="container mx-auto px-6">
         <div className="text-center mb-20">
           <span className="text-gold text-xs uppercase tracking-[0.4em] font-montserrat block mb-4">Reservations</span>

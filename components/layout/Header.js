@@ -54,7 +54,7 @@ export default function Header() {
         {/* Desktop Nav */}
         <nav className="hidden lg:block">
           <ul className="flex gap-12 text-[10px] uppercase tracking-[0.3em] font-medium text-ivory/70">
-            {['Services', 'Gallery', 'Testimonials', 'About', 'Contact'].map((item) => (
+            {['Services', 'Gallery', 'Testimonials', 'About', 'Reservations'].map((item) => (
               <li key={item}>
                 <Link href={`/#${item.toLowerCase()}`} className="hover:text-gold transition-colors relative group">
                   {item}
@@ -67,10 +67,10 @@ export default function Header() {
 
         <div className="flex items-center gap-8">
           <Link
-            href="/#contact"
+            href="/#reservations"
             className="hidden md:block px-8 py-3 border border-gold/40 text-gold text-[10px] uppercase tracking-widest hover:bg-gold hover:text-primary transition-all duration-500"
           >
-            Reserve
+            Book a Session
           </Link>
 
           {/* Mobile menu button */}
@@ -92,7 +92,7 @@ export default function Header() {
         className={`fixed top-0 right-0 h-screen bg-primary-dark z-[1001] transition-transform duration-700 w-full md:w-[400px] border-l border-ivory/5 flex flex-col justify-center items-center shadow-2xl ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
       >
         <ul className="flex flex-col items-center gap-10 text-xs uppercase tracking-[0.5em] text-ivory/80">
-          {['Services', 'Gallery', 'Testimonials', 'About', 'Contact'].map((item) => (
+          {['Services', 'Gallery', 'Testimonials', 'About', 'Reservations'].map((item) => (
             <li key={item}>
               <Link
                 href={`/#${item.toLowerCase()}`}
@@ -105,7 +105,7 @@ export default function Header() {
           ))}
         </ul>
         <Link
-          href="/#contact"
+          href="/#reservations"
           className="mt-20 px-12 py-4 bg-gold text-primary font-bold uppercase tracking-widest text-xs"
           onClick={() => setIsMobileMenuOpen(false)}
         >

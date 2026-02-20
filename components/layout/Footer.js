@@ -47,7 +47,7 @@ export default function Footer() {
               <li><Link href="/#services" className="hover:text-gold transition-colors focus-visible:text-gold outline-none">Services</Link></li>
               <li><Link href="/#gallery" className="hover:text-gold transition-colors focus-visible:text-gold outline-none">Artistry</Link></li>
               <li><Link href="/#about" className="hover:text-gold transition-colors focus-visible:text-gold outline-none">The Artiste</Link></li>
-              <li><Link href="/#contact" className="hover:text-gold transition-colors focus-visible:text-gold outline-none">Contact</Link></li>
+              <li><Link href="/#reservations" className="hover:text-gold transition-colors focus-visible:text-gold outline-none">Reservations</Link></li>
             </ul>
           </div>
 
