@@ -98,15 +98,15 @@ export default function BookingCalendar({ selectedDate, onDateSelect }) {
                 aspect-square flex items-center justify-center text-[10px] transition-all duration-300 relative
                 ${!d.day ? 'bg-transparent' : 'bg-primary cursor-pointer'}
                 ${d.isPast ? 'opacity-20 cursor-not-allowed' : 'hover:bg-primary-light hover:text-gold'}
-                ${isSelected ? 'bg-gold !text-primary font-bold' : 'text-ivory/60'}
+                ${isSelected ? '!text-primary font-bold' : 'text-ivory/60'}
               `}
                             onClick={() => d.day && !d.isPast && onDateSelect(d.date)}
                         >
-                            {d.day}
+                            <span className="relative z-10">{d.day}</span>
                             {isSelected && (
                                 <motion.div
                                     layoutId="calendar-selection"
-                                    className="absolute inset-0 border border-gold"
+                                    className="absolute inset-0 bg-gold border border-gold"
                                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                                 />
                             )}
