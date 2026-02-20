@@ -9,7 +9,7 @@ export default function AppointmentSection() {
   const [appointmentData, setAppointmentData] = useState({
     name: '',
     email: '',
-    phone: '',
+    phone: '+251',
     service: '',
     date: '',
     time: '',
@@ -189,7 +189,7 @@ export default function AppointmentSection() {
                     value={appointmentData.phone}
                     onChange={handleChange}
                     className="w-full bg-transparent border-b border-ivory/10 py-3 text-ivory/80 focus:border-gold focus-visible:border-gold outline-none transition-all duration-500 font-light placeholder:text-ivory/20 transition-property-[border-color]"
-                    placeholder="+1 234 567 890…"
+                    placeholder="+251 091..."
                     required
                   />
                 </div>
