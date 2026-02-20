@@ -11,11 +11,11 @@ const ServicesSection = dynamic(() => import('../components/sections/ServicesSec
   ssr: false, // Disable server-side rendering to avoid hydration mismatch
 });
 // ProductsSection import removed
-const AppointmentSection = dynamic(() => import('../components/sections/AppointmentSection'));
-const GallerySection = dynamic(() => import('../components/sections/GallerySection'));
-const TestimonialsSection = dynamic(() => import('../components/sections/TestimonialsSection'));
-const AboutSection = dynamic(() => import('../components/sections/AboutSection'));
-const ContactSection = dynamic(() => import('../components/sections/ContactSection'));
+const AppointmentSection = dynamic(() => import('../components/sections/AppointmentSection'), { ssr: false });
+const GallerySection = dynamic(() => import('../components/sections/GallerySection'), { ssr: false });
+const TestimonialsSection = dynamic(() => import('../components/sections/TestimonialsSection'), { ssr: false });
+const AboutSection = dynamic(() => import('../components/sections/AboutSection'), { ssr: false });
+const ContactSection = dynamic(() => import('../components/sections/ContactSection'), { ssr: false });
 
 export default function Home() {
   // Initialize scroll reveal animation
