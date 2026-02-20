@@ -196,19 +196,26 @@ export default function AppointmentSection() {
 
                 <div className="space-y-2">
                   <label htmlFor="apt_service" className="text-gold text-[10px] uppercase tracking-[0.2em] font-bold">Select Artistry</label>
-                  <select
-                    id="apt_service"
-                    name="service"
-                    value={appointmentData.service}
-                    onChange={handleChange}
-                    className="w-full bg-transparent border-b border-ivory/10 py-3 text-ivory/80 focus:border-gold focus-visible:border-gold outline-none transition-all duration-500 font-light appearance-none transition-property-[border-color]"
-                    required
-                  >
-                    <option value="" className="bg-primary text-ivory/20">Choose Service</option>
-                    {services.map((service, index) => (
-                      <option key={index} value={service} className="bg-primary text-ivory/80">{service}</option>
-                    ))}
-                  </select>
+                  <div className="relative group">
+                    <select
+                      id="apt_service"
+                      name="service"
+                      value={appointmentData.service}
+                      onChange={handleChange}
+                      className="w-full bg-transparent border-b border-ivory/10 py-3 text-ivory/80 focus:border-gold focus-visible:border-gold outline-none transition-all duration-500 font-light appearance-none transition-property-[border-color] pr-8"
+                      required
+                    >
+                      <option value="" className="bg-primary text-ivory/20">Choose Service</option>
+                      {services.map((service, index) => (
+                        <option key={index} value={service} className="bg-primary text-ivory/80">{service}</option>
+                      ))}
+                    </select>
+                    <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none text-gold/40 group-focus-within:text-gold transition-colors duration-500">
+                      <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -229,19 +236,26 @@ export default function AppointmentSection() {
 
                 <div className="space-y-2">
                   <label htmlFor="apt_time" className="text-gold text-[10px] uppercase tracking-[0.2em] font-bold">Aesthetic Time</label>
-                  <select
-                    id="apt_time"
-                    name="time"
-                    value={appointmentData.time}
-                    onChange={handleChange}
-                    className="w-full bg-transparent border-b border-ivory/10 py-3 text-ivory/80 focus:border-gold focus-visible:border-gold outline-none transition-all duration-500 font-light appearance-none transition-property-[border-color]"
-                    required
-                  >
-                    <option value="" className="bg-primary text-ivory/20">Choose Time</option>
-                    {timeSlots.map((time, index) => (
-                      <option key={index} value={time} className="bg-primary text-ivory/80">{time}</option>
-                    ))}
-                  </select>
+                  <div className="relative group">
+                    <select
+                      id="apt_time"
+                      name="time"
+                      value={appointmentData.time}
+                      onChange={handleChange}
+                      className="w-full bg-transparent border-b border-ivory/10 py-3 text-ivory/80 focus:border-gold focus-visible:border-gold outline-none transition-all duration-500 font-light appearance-none transition-property-[border-color] pr-8"
+                      required
+                    >
+                      <option value="" className="bg-primary text-ivory/20">Choose Time</option>
+                      {timeSlots.map((time, index) => (
+                        <option key={index} value={time} className="bg-primary text-ivory/80">{time}</option>
+                      ))}
+                    </select>
+                    <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none text-gold/40 group-focus-within:text-gold transition-colors duration-500">
+                      <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </div>
+                  </div>
                 </div>
               </div>
 
