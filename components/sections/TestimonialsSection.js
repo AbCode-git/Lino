@@ -67,8 +67,8 @@ export default function TestimonialsSection() {
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-[1px] bg-gold"></div>
                     <div>
-                      <h4 className="text-gold uppercase tracking-widest text-xs font-bold">{testimonials[currentSlide].name}</h4>
-                      <p className="text-ivory/40 text-[10px] uppercase tracking-widest">{testimonials[currentSlide].role}</p>
+                      <p className="text-gold text-[10px] uppercase tracking-widest font-bold mb-1">{testimonials[currentSlide].role}</p>
+                      <div className="w-8 h-[1px] bg-gold/30"></div>
                     </div>
                   </div>
                 </motion.div>
