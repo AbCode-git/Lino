@@ -35,9 +35,13 @@ export default function BookingCalendar({ selectedDate, onDateSelect }) {
         for (let i = 1; i <= daysInMonth; i++) {
             const dateObj = new Date(year, month, i);
             const isPast = dateObj < today;
+
+            // Format to exact local date string (YYYY-MM-DD) avoiding UTC conversion offset (crucial for EAT timezone)
+            const formattedDate = `${year}-${String(month + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
+
             calendarDays.push({
                 day: i,
-                date: dateObj.toISOString().split('T')[0],
+                date: formattedDate,
                 isPast,
                 currentMonth: true
             });
