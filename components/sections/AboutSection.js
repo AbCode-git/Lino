@@ -49,7 +49,7 @@ export default function AboutSection() {
 
             <div className={`mt-12 flex items-center gap-6 reveal-element ${inView ? 'active' : ''}`} style={{ transitionDelay: '400ms' }}>
               <div className="w-12 h-[1px] bg-gold"></div>
-              <span className="text-gold font-playfair italic text-2xl">Lulit G.</span>
+              <span className="text-gold font-playfair italic text-2xl">Lulit W.</span>
             </div>
 
             <Link
