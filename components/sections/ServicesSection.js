@@ -1,11 +1,6 @@
 import { motion } from 'framer-motion';
 
 export default function ServicesSection() {
-  const { ref: sectionRef, inView } = useInView({
-    threshold: 0.1,
-    triggerOnce: true
-  });
-
   const services = [
     {
       title: 'Signature Hair Artistry',

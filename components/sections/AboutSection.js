@@ -13,11 +13,6 @@ export default function AboutSection() {
   const yImage = useTransform(scrollYProgress, [0, 1], [-50, 50]);
   const yFrame = useTransform(scrollYProgress, [0, 1], [0, 100]);
 
-  const { ref: inViewRef, inView } = useInView({
-    threshold: 0.1,
-    triggerOnce: true
-  });
-
   return (
     <section id="about" className="about py-32 bg-primary-dark overflow-hidden" ref={sectionRef}>
       <div className="container mx-auto px-6">

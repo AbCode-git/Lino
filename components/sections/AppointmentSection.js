@@ -39,11 +39,6 @@ export default function AppointmentSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error'
 
-  const { ref: sectionRef, inView } = useInView({
-    threshold: 0.1,
-    triggerOnce: true
-  });
-
   // Fetch booked slots whenever the date changes
   useEffect(() => {
     if (appointmentData.date) {

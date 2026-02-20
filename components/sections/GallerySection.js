@@ -94,10 +94,6 @@ export default function GallerySection() {
   const y1 = useTransform(scrollYProgress, [0, 1], [0, -50]);
   const y2 = useTransform(scrollYProgress, [0, 1], [0, 50]);
 
-  const { ref: inViewRef, inView } = useInView({
-    threshold: 0.1,
-    triggerOnce: true
-  });
 
   const filteredItems = activeFilter === 'all'
     ? galleryItems
@@ -128,7 +124,7 @@ export default function GallerySection() {
             {filterCategories.map((category, index) => (
               <button
                 key={index}
-                className={`text - [10px] uppercase tracking - [0.3em] font - montserrat transition - colors relative pb - 2 ${activeFilter === category.value ? 'text-gold' : 'text-ivory/40 hover:text-ivory focus-visible:text-ivory'} outline - none`}
+                className={`text-[10px] uppercase tracking-[0.3em] font-montserrat transition-colors relative pb-2 ${activeFilter === category.value ? 'text-gold' : 'text-ivory/40 hover:text-ivory focus-visible:text-ivory'} outline-none`}
                 onClick={() => setActiveFilter(category.value)}
               >
                 {category.label}
@@ -143,7 +139,7 @@ export default function GallerySection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-12">
           {filteredItems.map((item, index) => (
             <motion.div
-              key={`${item.title} -${index} `}
+              key={`${item.title}-${index}`}
               layout
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
